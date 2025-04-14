@@ -1,36 +1,50 @@
-# Linked List in C
+# Data structures in C
 
-A simple implementation of a singly linked list in C.
+A simple implementation of data structures in C
 
-This project exists because reading about manual memory management is cute—but writing code that doesn't segfault is where the real learning happens.
+This project exists because reading about manual 
+memory management is cute—but writing code that 
+doesn't segfault is where the real learning happens.
 
 ## Why?
 
-Because malloc won't teach itself. I'm training my C skills by manually managing memory—no garbage collectors, no abstractions, just pointers and pain.
+Because malloc won't teach itself. I'm training 
+my C skills by manually managing memory—no garbage 
+collectors, no abstractions, just pointers and pain.
 
-## Features
+## Implemented:
 
-- Create nodes dynamically
-- Push values to the front or back of the list
-- Find nodes by value
-- Remove nodes cleanly (leak-free or bust)
-- Count nodes
-- Print the list
-- Free all nodes
+### Linked List
 
-## Build
+#### Build
 
 ```
-gcc main.c linked_list.c -o linked_list
+gcc main.c linkedlist.c -o linkedlist
 ```
 
 Assuming you have:
 
-- `linked_list.h` - the header
+- `linkedlist.h` - the header
 
-- `linked_list.c` - the implementation
+- `linkedlist.c` - the implementation
 
 - `main.c` - where you test this beast
+
+### Hash Map
+
+#### Build
+
+```
+gcc main.c hashmap.c -o hashmap
+```
+
+That means you should have:
+
+- `hashmap.h` - the header
+
+- `hashmap.c` - the implementation
+
+- `main.c` - test of this monster
 
 ## License
 
