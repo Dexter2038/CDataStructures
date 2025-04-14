@@ -15,7 +15,7 @@ HashMap *hash_init() {
 
   unsigned int bucket_count = 16;
   HashMapNode **buckets =
-      (HashMapNode **)malloc(bucket_count * sizeof(HashMapNode *));
+      (HashMapNode **)malloc(bucket_count * sizeof(HashMapNode));
   if (!buckets) {
     printf("Memory allocation failed\n");
     free(map);
@@ -36,7 +36,7 @@ HashMap *hash_init_with_size(unsigned int bucket_count) {
   }
 
   HashMapNode **buckets =
-      (HashMapNode **)malloc(bucket_count * sizeof(HashMapNode *));
+      (HashMapNode **)malloc(bucket_count * sizeof(HashMapNode));
   if (!buckets) {
     printf("Memory allocation failed\n");
     free(map);
