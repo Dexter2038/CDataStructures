@@ -21,12 +21,11 @@ Vec *vec_init() {
   vec->arr = arr;
   vec->size = 0;
   vec->capacity = 1;
-
   return vec;
 }
 
 int vec_push(Vec *vec, int value) {
-  if (vec == NULL) {
+  if (vec == NULL || vec->arr == NULL && vec->size != 0 && vec->capacity != 0) {
     return 0;
   }
 
@@ -38,7 +37,7 @@ int vec_push(Vec *vec, int value) {
       return 0;
     }
 
-    vec->capacity = vec->capacity * 2;
+    vec->capacity *= 2;
 
     for (int i = 0; i < vec->size; i++) {
       new_arr[i] = vec->arr[i];
@@ -48,29 +47,46 @@ int vec_push(Vec *vec, int value) {
 
     vec->arr = new_arr;
   }
-  vec->arr[vec->size] = value;
-  vec->size++;
+  vec->arr[vec->size++] = value;
   return 1;
 }
 
 int vec_pop(Vec *vec, int *value) {
-  if (vec == NULL || vec->size == 0) {
+  if (vec == NULL || vec->size == 0 || value == NULL) {
     return 0;
   }
 
-  vec->size--;
-
-  return vec->arr[vec->size];
+  *value = vec->arr[vec->size--];
+  return 1;
 }
 
 int vec_get(Vec *vec, size_t index, int *value) {
-  if (vec == NULL || index >= vec->size) {
+  if (vec == NULL || vec->arr == NULL || index >= vec->size || value == NULL) {
     return 0;
   }
 
-  return vec->arr[index];
+  *value = vec->arr[index];
+  return 1;
 }
 
-size_t vec_size(Vec *vec);
-size_t vec_capacity(Vec *vec);
-void vec_free(Vec *vec);
+size_t vec_size(Vec *vec) {
+  if (vec == NULL) {
+    return 0;
+  }
+  return vec->size;
+}
+
+size_t vec_capacity(Vec *vec) {
+  if (vec == NULL) {
+    return 0;
+  }
+  return vec->capacity;
+}
+
+void vec_free(Vec *vec) {
+  if (vec == NULL) {
+    return;
+  }
+  free(vec);
+  free(vec->arr);
+}
